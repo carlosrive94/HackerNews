@@ -1,0 +1,16 @@
+<div class="submission">
+
+<p class ="menu-superior"> Reply Comment</p>
+<div class="content">
+<div class="special-text">
+<%= @comment.user.userName %>
+<%= @comment.created_at %>
+</div>
+<br>
+
+<%= @comment.content %>
+<%= render 'form' %>
+
+<%= link_to 'Back', comments_path %>
+</div>
+</div>

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<div class="submission">
+  <div class="menu-superior">
+    Hacker News
+    <%= link_to 'Submit', new_submission_path %>
+    <%= link_to 'Register', new_user_path %>
+  </div>
+  <ul>
+    <% @submissions.each do |submission| %>
+      <li>
+        <div class="special-text">
+          <a href=<%= submission.url %> target="_blank"><%= submission.title %></a>
+          (<%= submission.url %>)<br />
+          <%= submission.points%> points
+          by <%= submission.user.userName %>
+          <%= link_to "#{submission.comments.size} comments", submission %>
+          <%= link_to 'Edit', edit_submission_path(submission) %>
+          <%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

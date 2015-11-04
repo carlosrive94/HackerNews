@@ -1,0 +1,24 @@
+// Place all the styles related to the Replies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.reply-comment{
+    margin-left:20px;
+    margin-top:30px;
+    background-color:#F6F6EF;
+    
+    .menu-superior{
+        background-color:#FF6600;
+        font-size:15px;
+        font-weight:800;
+    }
+    .content{
+        margin-left:20px;
+        margin-right:50px;
+        
+        .reply{
+            margin-left:20px;
+        }
+    }
+}
+
+

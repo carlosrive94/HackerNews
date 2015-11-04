@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<div class="submission">
+  <p class="menu-superior">Hacker News</p>
+  <div class="content">
+    
+    <div>
+      <%= @submission.title %>
+      <a href=submission.url class="special-text">
+        (<%= @submission.url %>)
+      </a>
+      <%= link_to '[Edit]', edit_submission_path(@submission) %><br> 
+      <div class="submission-text">
+        <%= @submission.points %> Points by <%= @submission.user.userName %>
+      </div>
+    </div>
+    
+    <p>
+      <%= @submission.content %>
+    </p>
+    
+    <textarea></textarea><br>
+    <%= link_to new_comment_path(:sub_id => @submission.id), :class => "btn" do %>
+    Add Comment
+    <% end %>
+    
+    <p></p>
+    
+    <% @submission.comments.each do |comment| %>
+      <div class="special-text">
+        <%= comment.points %>
+        <%= comment.user.userName %> 
+        <%= comment.created_at %>
+      </div><br>
+      <%= comment.content %><br>
+      <%= link_to 'Reply', new_reply_path(:com_id => comment.id) %>
+      
+      <% comment.replies.each do |reply| %>
+        <div class="reply">
+          <div class="special-text">
+            <%= reply.points %>
+            <%= reply.user.userName %>
+            <%= reply.created_at %>
+          </div><br>
+          <%= reply.content %>
+        </div>
+        <p></p>
+      <% end %>
+      <p></p>
+    <% end %>
+    
+    <p></p>
+    <%= link_to submissions_path, :class => "btn" do %>
+    Back
+    <% end %>
+  </div>
+</div>
