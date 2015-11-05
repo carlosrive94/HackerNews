@@ -9,7 +9,8 @@
       </a>
       <%= link_to '[Edit]', edit_submission_path(@submission) %><br> 
       <div class="submission-text">
-        <%= @submission.points %> Points by <%= @submission.user.userName %>
+        <%= @submission.points %> Points by <%= @submission.user.userName %> 
+        <%= @submission.created_at.to_formatted_s(:short) %>
       </div>
     </div>
     
@@ -18,7 +19,7 @@
     </p>
     
     <textarea></textarea><br>
-    <%= link_to new_comment_path(:sub_id => @submission.id), :class => "btn" do %>
+    <%= link_to new_comment_path(:submission => @submission), :class => "btn" do %>
     Add Comment
     <% end %>
     
@@ -28,17 +29,17 @@
       <div class="special-text">
         <%= comment.points %>
         <%= comment.user.userName %> 
-        <%= comment.created_at %>
+        <%= comment.created_at.to_formatted_s(:short) %>
       </div><br>
       <%= comment.content %><br>
-      <%= link_to 'Reply', new_reply_path(:com_id => comment.id) %>
+      <%= link_to 'Reply', new_reply_path(:comment => comment) %>
       
       <% comment.replies.each do |reply| %>
         <div class="reply">
           <div class="special-text">
             <%= reply.points %>
             <%= reply.user.userName %>
-            <%= reply.created_at %>
+            <%= reply.created_at.to_formatted_s(:short) %>
           </div><br>
           <%= reply.content %>
         </div>

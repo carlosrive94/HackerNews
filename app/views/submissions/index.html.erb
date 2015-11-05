@@ -13,6 +13,7 @@
           (<%= submission.url %>)<br />
           <%= submission.points%> points
           by <%= submission.user.userName %>
+          <%= submission.created_at.to_formatted_s(:short) %>
           <%= link_to "#{submission.comments.size} comments", submission %>
           <%= link_to 'Edit', edit_submission_path(submission) %>
           <%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %>

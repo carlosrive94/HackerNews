@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'submissions#index'
 
+  twitter = HackerNews::Application.config.twitter_login
+  twitter_endpoint = twitter.login_handler(:return_to => '/')
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
