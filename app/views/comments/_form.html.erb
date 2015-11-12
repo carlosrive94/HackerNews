@@ -19,10 +19,7 @@
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
   </div>
-  <div class="field">
-    <%= f.label :submission_id %><br>
-    <%= f.number_field :submission_id %>
-  </div>
+  <input type="hidden" name="comment[submission_id]" value="<%= @sub_id %>" />
   <div class="actions">
     <%= f.submit %>
   </div>
