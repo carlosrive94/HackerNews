@@ -18,7 +18,21 @@
       <%= @submission.content %>
     </p>
     
-    
+    <h3>Add a comment:</h3>
+    <%= form_for(@comment) do |f| %>
+      <div class="field">
+        <%= f.label :content %><br>
+        <%= f.text_area :content %>
+      </div>
+      <div class="field">
+        <%= f.label :user_id %><br>
+        <%= f.text_field :user_id %>
+      </div>
+      <input type="hidden" name="comment[submission_id]" value="<%= @submission.id %>" />
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
     
     <p></p>
     
