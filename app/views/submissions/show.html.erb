@@ -18,7 +18,7 @@
       <%= @submission.content %>
     </p>
     
-  
+    
     
     <p></p>
     
@@ -29,7 +29,7 @@
         <%= comment.created_at.to_formatted_s(:short) %>
       </div><br>
       <%= comment.content %><br>
-      <%= link_to 'Reply', new_reply_path(:comment => comment) %>
+      <%= link_to 'Reply', new_reply_path(:com_id => comment.id) %>
       
       <% comment.replies.each do |reply| %>
         <div class="reply">

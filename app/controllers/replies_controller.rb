@@ -15,8 +15,7 @@ class RepliesController < ApplicationController
   # GET /replies/new
   def new
     @reply = Reply.new
-    @comment = Comment.find(params[:comment])
-    @reply.update_attribute(:comment_id, @comment)
+    @comment = Comment.find(params[:com_id])
   end
 
   # GET /replies/1/edit
@@ -27,11 +26,11 @@ class RepliesController < ApplicationController
   # POST /replies.json
   def create
     @reply = Reply.new(reply_params)
-    # @reply.comment_id = params[:com_id]
+    @comment = Comment.find(@reply.comment_id)
 
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to @reply,
+        format.html { redirect_to submissions_path+"/"+@comment.submission_id.to_s,
           notice: 'Reply was successfully created.' }
         format.json { render :show, status: :created, location: @reply }
       else

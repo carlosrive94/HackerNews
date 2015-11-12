@@ -19,6 +19,7 @@
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
   </div>
+  <input type="hidden" name="reply[comment_id]" value="<%= @comment.id %>" />
   
   <div class="actions">
     <%= f.submit %>
