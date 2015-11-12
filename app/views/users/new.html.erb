@@ -1,5 +1,13 @@
-<h1>New User</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', users_path %>
+<div class="submission">
+  <div class="menu-superior">Hacker News</div>
+      <div class="content">
+          <h2>New User</h2>
+      
+        <%= render 'form' %>
+        
+        <%= link_to submissions_path , :class => "btn" do %>
+            Back
+        <% end %>
+      </div>
+    </div>
+</div>

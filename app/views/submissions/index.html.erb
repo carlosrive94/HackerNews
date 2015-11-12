@@ -1,9 +1,10 @@
-<p id="notice"><%= notice %></p>
 <div class="submission">
   <div class="menu-superior">
-    Hacker News
-    <%= link_to 'Submit', new_submission_path %>
-    <%= link_to 'Register', new_user_path %>
+    <%= link_to 'Hacker News', submissions_path %>
+    <div class="left-text">
+      <%= link_to 'Submit', new_submission_path %> |
+      <%= link_to 'Register', new_user_path %>
+    </div>
   </div>
   <ul>
     <% @submissions.each do |submission| %>

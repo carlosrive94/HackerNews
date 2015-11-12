@@ -5,5 +5,7 @@
 | Actualitzar scaffolding | Eloi Pardo | Eloi Pardo | 3 | 1.5 |
 | Deploy heroku | Eloi Pardo | Eloi Pardo, Carlos Rivero | 3 | 0.2 |
 | Revisar disseny intern | Oriol Fort | Tots | 3 | 1 |
-| Pàgines web app v0.2 | Carlos Rivero | Carlos Rivero, Daniel Villanueva | 3 | 2 |
-| BD web app v0.2 | Oriol Fort | Oriol Fort, Eloi Pardo | 3 | 2 |
+| Disseny vistes web app v0.2 | Carlos Rivero | Carlos Rivero, Daniel Villanueva, Eloi Pardo | 3 | 2 |
+| Links  | Daniel Villanueva | Carlos Rivero, Daniel Villanueva, Eloi Pardo | 3 | 2 |
+| Pàgines web app v0.2 | Eloi Pardo | Carlos Rivero, Daniel Villanueva, Eloi Pardo | 3 | 2 |
+| BD web app v0.2 | Oriol Fort | Carlos Rivero, Daniel Villanueva, Eloi Pardo | 3 | 2 |
