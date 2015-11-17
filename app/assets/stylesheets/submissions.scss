@@ -1,6 +1,6 @@
 a{
     background-color: transparent; 
-    color: inherit;
+    color: #000 !important;
     text-decoration: none;
     font-size: 9pt;
     
@@ -28,12 +28,16 @@ a{
     }
 }
 
+input{
+    cursor: pointer;
+}
+
 
 
 .submission{
-    margin-left: 150px;
-    margin-right: 50px;
-    margin-top: 50px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 10px;
     padding-bottom: 30px;
     background-color:#F6F6EF;
     color: #000;
@@ -51,7 +55,11 @@ a{
             margin-left: 10px;
             font-weight: normal;
             display: inline;
-            
+        }
+        .right-text{
+            float:right;
+            font-weight: normal;
+            padding-right: 4px;
         }
     }
     
@@ -62,7 +70,7 @@ a{
     }
     
     .content{
-        margin-left: 50px;
+        margin-left: 20px;
         margin-top: 20px;
         
         .submission-text{

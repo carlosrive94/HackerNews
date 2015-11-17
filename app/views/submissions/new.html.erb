@@ -1,5 +1,14 @@
 <div class="submission">
-  <div class="menu-superior">Hacker News</div>
+  <div class="menu-superior">
+    <%= link_to 'Hacker News', submissions_path %>
+    <div class="right-text">
+      <% if current_user %>
+        Logged as <%= current_user.userName %>
+      <% else %>
+        <%= link_to 'Log In', root_path + "/auth/twitter"%>
+      <% end %>
+    </div>
+  </div>
       <div class="content">
           <h2>New Submission</h2>
 

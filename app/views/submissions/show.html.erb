@@ -1,5 +1,14 @@
 <div class="submission">
-  <div class="menu-superior">Hacker News</div>
+  <div class="menu-superior">
+    <%= link_to 'Hacker News', submissions_path %>
+    <div class="right-text">
+      <% if current_user %>
+        Logged as <%= current_user.userName %>
+      <% else %>
+        <%= link_to 'Log In', root_path + "/auth/twitter"%>
+      <% end %>
+    </div>
+  </div>
   <div class="content">
     
     <div>
@@ -17,11 +26,8 @@
     <p>
       <%= @submission.content %>
     </p>
-    
-    <h3>Add a comment:</h3>
     <%= form_for(@comment) do |f| %>
       <div class="field">
-        <%= f.label :content %><br>
         <%= f.text_area :content %>
       </div>
       <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>" />
@@ -40,7 +46,7 @@
         <%= comment.created_at.to_formatted_s(:short) %>
       </div><br>
       <%= comment.content %><br>
-      <%= link_to 'Reply', new_reply_path(:com_id => comment.id) %>
+      <%= link_to '[Reply]', new_reply_path(:com_id => comment.id) %>
       
       <% comment.replies.each do |reply| %>
         <div class="reply">
