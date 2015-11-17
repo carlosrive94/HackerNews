@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password
       t.integer :karma
       t.text :about
+      t.string :uid
 
       t.timestamps null: false
     end

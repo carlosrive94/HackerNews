@@ -5,8 +5,14 @@
       <%= link_to 'Submit', new_submission_path %> |
       <%= link_to 'Register', new_user_path %>
     </div>
+    <span class="right-text">
+      <% if current_user %>
+        USER <%= current_user.userName %>
+      <% end %>
+    </span>
   </div>
   <ul>
+    
     <% @submissions.each do |submission| %>
       <li>
         <div class="special-text">

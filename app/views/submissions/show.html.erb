@@ -24,10 +24,7 @@
         <%= f.label :content %><br>
         <%= f.text_area :content %>
       </div>
-      <div class="field">
-        <%= f.label :user_id %><br>
-        <%= f.text_field :user_id %>
-      </div>
+      <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>" />
       <input type="hidden" name="comment[submission_id]" value="<%= @submission.id %>" />
       <div class="actions">
         <%= f.submit %>
@@ -38,8 +35,8 @@
     
     <% @submission.comments.each do |comment| %>
       <div class="special-text">
-        <%= comment.points %>
-        <%= comment.user.userName %> 
+        <%= comment.points %> points
+        by <%= comment.user.userName %> 
         <%= comment.created_at.to_formatted_s(:short) %>
       </div><br>
       <%= comment.content %><br>
@@ -48,8 +45,8 @@
       <% comment.replies.each do |reply| %>
         <div class="reply">
           <div class="special-text">
-            <%= reply.points %>
-            <%= reply.user.userName %>
+            <%= reply.points %> points
+            by <%= reply.user.userName %>
             <%= reply.created_at.to_formatted_s(:short) %>
           </div><br>
           <%= reply.content %>
