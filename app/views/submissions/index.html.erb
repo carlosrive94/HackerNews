@@ -18,7 +18,10 @@
       <li>
         <div class="special-text">
           <a href=<%= submission.url %> target="_blank"><%= submission.title %></a>
-          (<%= submission.url %>)<br />
+          <% if submission.url != "" %>
+            (<%= submission.url %>)
+          <% end %>
+          <br />
           <%= submission.points%> points
           by <%= submission.user.userName %>
           <%= submission.created_at.to_formatted_s(:short) %>
