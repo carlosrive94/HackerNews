@@ -33,7 +33,7 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @submission = Submission.new(submission_params)
-    if (@submission.url == "" and @submission.content != "") or (@submission.url != "" and @submission.content == "")
+    #if (@submission.url == "" and @submission.content != "") or (@submission.url != "" and @submission.content == "")
 
       respond_to do |format|
         if @submission.save
@@ -44,7 +44,7 @@ class SubmissionsController < ApplicationController
           format.json { render json: @submission.errors, status: :unprocessable_entity }
         end
       end
-    end
+    #end
   end
 
   # PATCH/PUT /submissions/1
