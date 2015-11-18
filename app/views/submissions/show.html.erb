@@ -23,7 +23,8 @@
       <% end %>  
       <br> 
       <div class="submission-text">
-        <%= @submission.points %> Points by <%= @submission.user.userName %> 
+        <%= @submission.points %> Points 
+        by <%= link_to @submission.user.userName, @submission.user %>
         <%= @submission.created_at.to_formatted_s(:short) %>
       </div>
     </div>
@@ -31,15 +32,18 @@
     <p>
       <%= @submission.content %>
     </p>
-    <%= form_for(@comment) do |f| %>
-      <div class="field">
-        <%= f.text_area :content %>
-      </div>
-      <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>" />
-      <input type="hidden" name="comment[submission_id]" value="<%= @submission.id %>" />
-      <div class="actions">
-        <%= f.submit %>
-      </div>
+    
+    <% if current_user %>
+      <%= form_for(@comment) do |f| %>
+        <div class="field">
+          <%= f.text_area :content %>
+        </div>
+        <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>" />
+        <input type="hidden" name="comment[submission_id]" value="<%= @submission.id %>" />
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
     <% end %>
     
     <p></p>
@@ -51,7 +55,9 @@
         <%= comment.created_at.to_formatted_s(:short) %>
       </div><br>
       <%= comment.content %><br>
-      <%= link_to '[Reply]', new_reply_path(:com_id => comment.id) %>
+      <% if current_user %>
+        <%= link_to '[Reply]', new_reply_path(:com_id => comment.id) %>
+      <% end %>
       
       <% comment.replies.each do |reply| %>
         <div class="reply">

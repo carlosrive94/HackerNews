@@ -3,10 +3,9 @@
     <%= link_to 'Hacker News', submissions_path %>
     <div class="left-text">
       <% if current_user %>
-        <%= link_to 'Submit', new_submission_path %>
-      <%end%> | 
-      
-        <%= link_to "Ask", submissions_path + '?ask=true'%>
+        <%= link_to 'Submit', new_submission_path %> |
+      <%end%>
+      <%= link_to "Ask", submissions_path + '?ask=true'%>
     </div>
     <div class="right-text">
       <% if current_user %>
@@ -16,8 +15,10 @@
       <% end %>
     </div>
   </div>
+  
   <ul>
-  <% if !current_page?(ask: 'true')  %> <!-- SUBMITS!!! -->
+  <!-- LINKS -->
+  <% if !current_page?(ask: 'true')  %>
     <% @submissions.each do |submission| %>
       <li>
         <div class="special-text">
@@ -27,9 +28,9 @@
           <% else %>
             <%= link_to submission.title, submission %>
           <% end %>
-          <br/>
+          <br>
           <%= submission.points%> points
-          by <%= submission.user.userName %>
+          by <%= link_to submission.user.userName, submission.user %>
           <%= submission.created_at.to_formatted_s(:short) %>
           <%= link_to "#{submission.comments.size} comments", submission %>
           
@@ -43,26 +44,26 @@
     <% end %>
   <% end %>
   
-  <% if current_page?(ask: 'true')  %> <!-- PREGUNTES!!! S'HA DE FER BÉ -->
+  <!-- PREGUNTES -->
+  <% if current_page?(ask: 'true')  %>
     <% @submissions.each do |submission| %>
-      <li>
-        <div class="special-text">
-          <% if submission.content != "" %>
+      <% if submission.content != "" %>
+        <li>
+          <div class="special-text">
             <%= link_to submission.title, submission %>
-          <br/>
-          <%= submission.points%> points
-          by <%= submission.user.userName %>
-          <%= submission.created_at.to_formatted_s(:short) %>
-          <%= link_to "#{submission.comments.size} comments", submission %>
-          
-          <% if current_user == submission.user %>
-            <%= link_to 'Edit', edit_submission_path(submission) %>
-            <%= link_to 'Remove', submission, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-          <%end%>
-          
-        </div>
-      </li>
+            <br>
+            <%= submission.points%> points
+            by <%= link_to submission.user.userName, submission.user %>
+            <%= submission.created_at.to_formatted_s(:short) %>
+            <%= link_to "#{submission.comments.size} comments", submission %>
+            
+            <% if current_user == submission.user %>
+              <%= link_to 'Edit', edit_submission_path(submission) %>
+              <%= link_to 'Remove', submission, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
     <% end %>
   <% end %>
   
