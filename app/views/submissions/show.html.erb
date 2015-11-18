@@ -65,7 +65,7 @@
           <a href="sadsadasd" class="upvote"></a>
           <div class="special-text">
             <%= reply.points %> points
-            by <%= reply.user.userName %>
+            by <%= link_to reply.user.userName, reply.user %>
             <%= reply.created_at.to_formatted_s(:short) %>
           </div><br>
           <%= reply.content %>
