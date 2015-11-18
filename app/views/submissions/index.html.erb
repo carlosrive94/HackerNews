@@ -19,7 +19,7 @@
   
     <ul>
     <!-- LINKS -->
-    <% if !current_page?(ask: 'true')  %>
+    <% if current_page?(ask: 'false')  %>
       <% @submissions.each do |submission| %>
         <li>
           <%= link_to "", like_submission_path(submission), method: :put , :class => "upvote" %>
