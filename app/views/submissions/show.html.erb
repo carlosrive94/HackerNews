@@ -23,7 +23,7 @@
       <% end %>  
       <br> 
       <div class="submission-text">
-        <%= @submission.points %> Points 
+        <%= @submission.points %> points 
         by <%= link_to @submission.user.userName, @submission.user %>
         <%= @submission.created_at.to_formatted_s(:short) %>
       </div>
@@ -50,8 +50,8 @@
     
     <% @submission.comments.each do |comment| %>
       <div class="special-text">
-        <%= comment.points %> points
-        by <%= comment.user.userName %> 
+        <%= comment.points %> points 
+        by <%= link_to comment.user.userName, comment.user %>
         <%= comment.created_at.to_formatted_s(:short) %>
       </div><br>
       <%= comment.content %><br>
