@@ -1,24 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="submission">
+  <div class="menu-superior">
+    <%= link_to 'Hacker News', submissions_path %>
+    <div class="right-text">
+      <% if current_user %>
+        Logged as <%= current_user.userName %>
+      <% else %>
+        <%= link_to 'Log In', root_path + "/auth/twitter"%>
+      <% end %>
+    </div>
+  </div>
+  <div class="content">
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.userName %>
-</p>
+            <strong>Username:</strong>
+              <%= @user.userName %>
+            </p>
+            
+            <p>
+              <strong>Karma:</strong>
+              <%= @user.karma %>
+            </p>
+            
+            <p>
+              <strong>About:</strong>
+              <%= @user.about %>
+            </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+            <%= link_to edit_user_path(@user)  , :class => "btn" do %>
+                Edit
+            <% end %>
+            
+            <p>
 
-<p>
-  <strong>Karma:</strong>
-  <%= @user.karma %>
-</p>
-
-<p>
-  <strong>About:</strong>
-  <%= @user.about %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+            <%= link_to users_path  , :class => "btn" do %>
+                Back
+            <% end %>
+      </div>
+    </div>
+</div>
