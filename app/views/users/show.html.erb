@@ -1,17 +1,37 @@
-<p>
-  <strong>Username:</strong>
-  <%= @user.userName %>
-</p>
+<div class="submission">
+  <div class="menu-superior">
+    <%= link_to 'Hacker News', submissions_path %>
+    <div class="right-text">
+      <% if current_user %>
+        Logged as <%= current_user.userName %>
+      <% else %>
+        <%= link_to 'Log In', root_path + "/auth/twitter"%>
+      <% end %>
+    </div>
+  </div>
+  <div class="content">
 
-<p>
-  <strong>Karma:</strong>
-  <%= @user.karma %>
-</p>
+            <strong>Username:</strong>
+              <%= @user.userName %>
+            </p>
+            
+            <p>
+              <strong>Karma:</strong>
+              <%= @user.karma %>
+            </p>
+            
+            <p>
+              <strong>About:</strong>
+              <%= @user.about %>
+            </p>
 
-<p>
-  <strong>About:</strong>
-  <%= @user.about %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Submissions', submissions_path %>
+            <%= link_to edit_user_path(@user)  , :class => "btn" do %>
+                Edit
+            <% end %>
+            <p>
+            <%= link_to users_path  , :class => "btn" do %>
+                Back
+            <% end %>
+      </div>
+    </div>
+</div>

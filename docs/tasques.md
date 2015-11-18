@@ -9,3 +9,5 @@
 | Links  | Daniel Villanueva | Carlos Rivero, Daniel Villanueva, Eloi Pardo | 3 | 2 |
 | Pàgines web app v0.2 | Eloi Pardo | Carlos Rivero, Daniel Villanueva, Eloi Pardo | 3 | 2 |
 | BD web app v0.2 | Oriol Fort | Carlos Rivero, Daniel Villanueva, Eloi Pardo | 3 | 2 |
+| Login w/ Twitter: documentació | Daniel Villanueva | Carlos Rivero, Daniel Villanueva | 4 | 2 |
+| Login w/ Twitter: implementació | Daniel Villanueva | Carlos Rivero, Daniel Villanueva | 4 | 2 |
