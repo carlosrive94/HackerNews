@@ -5,6 +5,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions.json
   def index
     @submissions = Submission.all
+    @isAsk = false
   end
 
   # GET /submissions/1
