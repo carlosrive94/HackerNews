@@ -8,7 +8,7 @@
       <% if current_user %>
         Logged as <%= current_user.userName %>
       <% else %>
-        <%= link_to 'Log In', root_path + "/auth/twitter"%>
+        <%= link_to 'Log In', "/auth/twitter"%>
       <% end %>
     </div>
   </div>
