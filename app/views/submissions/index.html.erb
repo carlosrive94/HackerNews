@@ -2,11 +2,15 @@
   <div class="menu-superior">
     <%= link_to 'Hacker News', submissions_path %>
     <div class="left-text">
-      <%= link_to 'Submit', new_submission_path %>
+      <% if current_user %>
+        <%= link_to 'Submit', new_submission_path %>
+      <%end%> | 
+      
+        <%= link_to 'Ask', submissions_path %>
     </div>
     <div class="right-text">
       <% if current_user %>
-        Logged as <%= current_user.userName %>
+        Logged as <%= current_user.userName %> | <%= link_to 'Profile', current_user%>
       <% else %>
         <%= link_to 'Log In', "/auth/twitter"%>
       <% end %>

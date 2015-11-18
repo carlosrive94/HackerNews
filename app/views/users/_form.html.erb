@@ -13,12 +13,9 @@
 
   <div class="field">
     <%= f.label :userName %><br>
-    <%= f.text_field :userName %>
+    <%= current_user.userName  %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
-  </div>
+
   <div class="field">
     <%= f.label :about %><br>
     <%= f.text_area :about %>
