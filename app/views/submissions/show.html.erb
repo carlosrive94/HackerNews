@@ -3,7 +3,7 @@
     <%= link_to 'Hacker News', submissions_path %>
     <div class="right-text">
       <% if current_user %>
-        Logged as <%= current_user.userName %> | <%= link_to 'Profile', current_user%>
+        Logged as <%= link_to current_user.userName , current_user%>
       <% else %>
         <%= link_to 'Log In', root_path + "/auth/twitter"%>
       <% end %>
