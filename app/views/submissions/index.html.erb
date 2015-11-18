@@ -22,7 +22,7 @@
     <% if !current_page?(ask: 'true')  %>
       <% @submissions.each do |submission| %>
         <li>
-          <a href="sadsadasd" class="upvote"></a>
+          <%= link_to "", like_submission_path(submission), method: :put , :class => "upvote" %>
           <div class="special-text">
             <% if submission.url != "" %>
               <a href=<%= submission.url %> target="_blank"><%= submission.title %></a>
@@ -31,7 +31,7 @@
               <%= link_to submission.title, submission %>
             <% end %>
             <br>
-            <%= submission.points%> points
+            <%= submission.get_upvotes.size%> points
             by <%= link_to submission.user.userName, submission.user %>
             <%= submission.created_at.to_formatted_s(:short) %>
             <%= link_to "#{submission.comments.size} comments", submission %>
@@ -51,11 +51,11 @@
       <% @submissions.each do |submission| %>
         <% if submission.content != "" %>
           <li>
-            <a href="sadsadasd" class="upvote"></a>
+            <%= link_to "", like_submission_path(submission), method: :put , :class => "upvote" %>
             <div class="special-text">
               <%= link_to submission.title, submission %>
               <br>
-              <%= submission.points%> points
+              <%= submission.get_upvotes.size%> points
               by <%= link_to submission.user.userName, submission.user %>
               <%= submission.created_at.to_formatted_s(:short) %>
               <%= link_to "#{submission.comments.size} comments", submission %>

@@ -49,9 +49,9 @@
     <p></p>
     
     <% @submission.comments.each do |comment| %>
-      <a href="sadsadasd" class="upvote"></a>
+      <%= link_to "", like_comment_path(comment), method: :put , :class => "upvote" %>
       <div class="special-text">
-        <%= comment.points %> points 
+        <%= comment.get_upvotes.size %> points 
         by <%= link_to comment.user.userName, comment.user %>
         <%= comment.created_at.to_formatted_s(:short) %>
       </div><br>
@@ -62,9 +62,9 @@
       
       <% comment.replies.each do |reply| %>
         <div class="reply">
-          <a href="sadsadasd" class="upvote"></a>
+          <%= link_to "", like_reply_path(reply), method: :put , :class => "upvote" %>
           <div class="special-text">
-            <%= reply.points %> points
+            <%= reply.get_upvotes.size %> points
             by <%= link_to reply.user.userName, reply.user %>
             <%= reply.created_at.to_formatted_s(:short) %>
           </div><br>

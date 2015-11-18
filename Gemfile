@@ -23,3 +23,4 @@ group :production do
 end
 
 gem 'omniauth-twitter', '~> 1.1.0'
+gem 'acts_as_votable', '~> 0.10.0'

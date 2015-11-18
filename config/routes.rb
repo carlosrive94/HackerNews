@@ -1,10 +1,23 @@
 Rails.application.routes.draw do
-  resources :replies 
-  resources :submissions  
-    resources :comments
+  resources :replies do
+    member do
+      put "like", to: "replies#upvote"
+    end
+  end
   
+  resources :submissions  do
+    member do
+      put "like", to: "submissions#upvote"
+    end
+  end
+  
+  resources :comments do
+    member do
+      put "like", to: "comments#upvote"
+    end
+  end  
     
-  resources :users
+  resources :users 
   
   get '/auth/:provider/callback', to:'sessions#create'
   # The priority is based upon order of creation: first created -> highest priority.

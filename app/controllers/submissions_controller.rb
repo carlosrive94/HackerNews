@@ -1,6 +1,12 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
 
+  def upvote
+    @submission = Submission.find(params[:id])
+    @submission.upvote_by current_user
+    redirect_to :back
+  end
+
   # GET /submissions
   # GET /submissions.json
   def index
