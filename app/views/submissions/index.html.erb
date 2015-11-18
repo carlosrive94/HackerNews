@@ -15,42 +15,21 @@
       <% end %>
     </div>
   </div>
+  <div class= "content">
   
-  <ul>
-  <!-- LINKS -->
-  <% if !current_page?(ask: 'true')  %>
-    <% @submissions.each do |submission| %>
-      <li>
-        <div class="special-text">
-          <% if submission.url != "" %>
-            <a href=<%= submission.url %> target="_blank"><%= submission.title %></a>
-            (<%= submission.url %>)
-          <% else %>
-            <%= link_to submission.title, submission %>
-          <% end %>
-          <br>
-          <%= submission.points%> points
-          by <%= link_to submission.user.userName, submission.user %>
-          <%= submission.created_at.to_formatted_s(:short) %>
-          <%= link_to "#{submission.comments.size} comments", submission %>
-          
-          <% if current_user == submission.user %>
-            <%= link_to 'Edit', edit_submission_path(submission) %>
-            <%= link_to 'Remove', submission, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-          
-        </div>
-      </li>
-    <% end %>
-  <% end %>
-  
-  <!-- PREGUNTES -->
-  <% if current_page?(ask: 'true')  %>
-    <% @submissions.each do |submission| %>
-      <% if submission.content != "" %>
+    <ul>
+    <!-- LINKS -->
+    <% if !current_page?(ask: 'true')  %>
+      <% @submissions.each do |submission| %>
         <li>
+          <a href="sadsadasd" class="upvote"></a>
           <div class="special-text">
-            <%= link_to submission.title, submission %>
+            <% if submission.url != "" %>
+              <a href=<%= submission.url %> target="_blank"><%= submission.title %></a>
+              (<%= submission.url %>)
+            <% else %>
+              <%= link_to submission.title, submission %>
+            <% end %>
             <br>
             <%= submission.points%> points
             by <%= link_to submission.user.userName, submission.user %>
@@ -61,11 +40,36 @@
               <%= link_to 'Edit', edit_submission_path(submission) %>
               <%= link_to 'Remove', submission, method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
+            
           </div>
         </li>
       <% end %>
     <% end %>
-  <% end %>
-  
-  </ul>
+    
+    <!-- PREGUNTES -->
+    <% if current_page?(ask: 'true')  %>
+      <% @submissions.each do |submission| %>
+        <% if submission.content != "" %>
+          <li>
+            <a href="sadsadasd" class="upvote"></a>
+            <div class="special-text">
+              <%= link_to submission.title, submission %>
+              <br>
+              <%= submission.points%> points
+              by <%= link_to submission.user.userName, submission.user %>
+              <%= submission.created_at.to_formatted_s(:short) %>
+              <%= link_to "#{submission.comments.size} comments", submission %>
+              
+              <% if current_user == submission.user %>
+                <%= link_to 'Edit', edit_submission_path(submission) %>
+                <%= link_to 'Remove', submission, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    
+    </ul>
+  </div>
 </div>

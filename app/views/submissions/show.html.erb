@@ -49,6 +49,7 @@
     <p></p>
     
     <% @submission.comments.each do |comment| %>
+      <a href="sadsadasd" class="upvote"></a>
       <div class="special-text">
         <%= comment.points %> points 
         by <%= link_to comment.user.userName, comment.user %>
@@ -61,6 +62,7 @@
       
       <% comment.replies.each do |reply| %>
         <div class="reply">
+          <a href="sadsadasd" class="upvote"></a>
           <div class="special-text">
             <%= reply.points %> points
             by <%= reply.user.userName %>
