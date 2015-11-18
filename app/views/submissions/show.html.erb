@@ -13,10 +13,15 @@
     
     <div>
       <%= @submission.title %>
-      <a href=submission.url class="special-text">
-        (<%= @submission.url %>)
-      </a>
-      <%= link_to '[Edit]', edit_submission_path(@submission) %><br> 
+      <% if @submission.url != ""%>
+        <a href=submission.url class="special-text">
+          (<%= @submission.url %>)
+        </a>
+      <% end %>
+      <% if current_user == @submission.user %>
+        <%= link_to '[Edit]', edit_submission_path(@submission) %>
+      <% end %>  
+      <br> 
       <div class="submission-text">
         <%= @submission.points %> Points by <%= @submission.user.userName %> 
         <%= @submission.created_at.to_formatted_s(:short) %>
