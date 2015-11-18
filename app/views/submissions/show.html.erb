@@ -12,6 +12,7 @@
   <div class="content">
     
     <div>
+      <%= link_to "", like_submission_path(@submission), method: :put , :class => "upvote" %>
       <%= @submission.title %>
       <% if @submission.url != ""%>
         <a href=submission.url class="special-text">
@@ -23,7 +24,7 @@
       <% end %>  
       <br> 
       <div class="submission-text">
-        <%= @submission.points %> points 
+        <%= @submission.get_upvotes.size %> points 
         by <%= link_to @submission.user.userName, @submission.user %>
         <%= @submission.created_at.to_formatted_s(:short) %>
       </div>
