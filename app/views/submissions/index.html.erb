@@ -20,7 +20,7 @@
     <ul>
     <!-- LINKS -->
     <% if !current_page?(ask: 'true')  %>
-      <% @submissions.each do |submission| %>
+      <% @submissions.order('created_at desc').each do |submission| %>
         <li>
           <%= link_to "", like_submission_path(submission), method: :put , :class => "upvote" %>
           <div class="special-text">
