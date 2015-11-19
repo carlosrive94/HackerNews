@@ -1,6 +1,6 @@
 <div class="submission">
     <div class="menu-superior">
-        <%= link_to 'Hacker News', submissions_path %>
+        <%= link_to 'Hacker News', submissions_path + '?ask=false'%>
         <div class="right-text">
           <% if current_user %>
             Logged as <%= link_to current_user.userName , current_user%>
