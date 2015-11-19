@@ -1,6 +1,6 @@
 <div class="submission">
   <div class="menu-superior">
-    <%= link_to 'Hacker News', submissions_path + '?ask=false' %>
+    <%= link_to 'Hacker News', submissions_path %>
     <div class="left-text">
       <% if current_user %>
         <%= link_to 'Submit', new_submission_path %> |
@@ -19,7 +19,7 @@
   
     <ul>
     <!-- LINKS -->
-    <% if current_page?(ask: 'false')  %>
+    <% if !current_page?(ask: 'true')  %>
       <% @submissions.each do |submission| %>
         <li>
           <%= link_to "", like_submission_path(submission), method: :put , :class => "upvote" %>
