@@ -33,8 +33,9 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @submission = Submission.new(submission_params)
-    #if (@submission.url == "" and @submission.content != "") or (@submission.url != "" and @submission.content == "")
-
+    if (@submission.url != "" and @submission.content != "")
+      redirect_to :back
+    else
       respond_to do |format|
         if @submission.save
           format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
@@ -44,7 +45,7 @@ class SubmissionsController < ApplicationController
           format.json { render json: @submission.errors, status: :unprocessable_entity }
         end
       end
-    #end
+    end
   end
 
   # PATCH/PUT /submissions/1
