@@ -1,5 +1,7 @@
 module API
-    class CommentsController < ApplicationController
+    class CommentsController < ActionController::Base
+        before_action :addheaders
+        skip_before_action :verify_authenticity_token
         
         def index
             @comments = Comment.all

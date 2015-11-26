@@ -1,6 +1,8 @@
 module API
     class RepliesController < ApplicationController
-        
+        before_action :addheaders
+        skip_before_action :verify_authenticity_token
+       
         def index
             @replies = Reply.all;
             respond_to do |format|
