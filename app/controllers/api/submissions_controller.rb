@@ -26,6 +26,11 @@ module API
             end
         end
         
+        def delete
+            @submission = Submission.find(params[:id])
+            @submission.destroy
+        end
+        
 
         def show
             @submission = Submission.find(params[:id])

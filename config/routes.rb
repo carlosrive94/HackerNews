@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       scope '/:id' do
         get '/' => 'api/submissions#show'
         get '/comments' => 'api/submissions#comments'
+        delete '/delete' => 'api/submissions#delete'
       end
     end
     scope '/comments' do
