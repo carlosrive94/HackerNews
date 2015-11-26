@@ -22,11 +22,50 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to:'sessions#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  
   # You can have the root of your site routed with "root"
   root 'submissions#index'
-
-
+  
+  
+  #api
+  
+  scope '/api', defaults: {format: :json} do
+    scope '/submissions' do
+      get '/' => 'api/submissions#index'
+      post '/' => 'api/submissions#create'
+      scope '/:id' do
+        get '/' => 'api/submissions#show'
+        get '/comments' => 'api/submissions#comments'
+      end
+    end
+    scope '/comments' do
+      get '/' => 'api/comments#index'
+      post '/' => 'api/comments#create'
+      scope '/:id' do
+        get '/' => 'api/comments#show'
+        get '/replies' => 'api/comments#replies'
+      end
+    end
+    scope '/users' do
+      get '/' => 'api/users#index'
+      post '/' => 'api/users#create'
+      scope '/:id' do
+        get '/' => 'api/users#show'
+        put '/' => 'api/users#edit'
+        get '/' => 'api/users#submissions'
+        get '/' => 'api/users#comments'
+        get '/' => 'api/users#replies'
+      end
+    end
+    scope '/replies' do
+      get '/' => 'api/replies#index'
+      post '/' => 'api/replies#create'
+      scope '/:id' do
+        get '/' => 'api/replies#show'
+      end
+    end
+  end
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
