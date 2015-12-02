@@ -1,6 +1,5 @@
 module API
     class UsersController < ApplicationController
-        before_action :addheaders
         skip_before_action :verify_authenticity_token
       
         def index
@@ -11,22 +10,31 @@ module API
             end
         end
         
-        def create
-        end
-        
+
         def edit
+            @user = User.find(params[:id])
+            @user.about = params["about"]
+            respond_to do |format|
+                if @user.save
+                    format.json { render json: @user }
+                    format.xml { render xml: @user }
+                else
+                    format.json { render json: @user.errors, status: :unprocessable_entity }
+                    format.xml { render xml: @user.errors, status: :unprocessable_entity }
+                end
+            end
         end
     
         def show
-            @user = User.find(params[:id]);
+            @user = User.find(params[:id])
             respond_to do |format|
                 format.xml { render xml: @user }
                 format.json { render json: @user }
             end
         end
         
-        def submissons
-            @user = User.find(params[:id]);
+        def submissions
+            @user = User.find(params[:id])
             respond_to do |format|
                 format.xml { render xml: @user.submissions }
                 format.json { render json: @user.submissions }
@@ -34,7 +42,7 @@ module API
         end
         
         def comments
-           @user = User.find(params[:id]);
+           @user = User.find(params[:id])
            respond_to do |format|
                 format.xml { render xml: @user.comments }
                 format.json { render json: @user.comments }
@@ -43,7 +51,7 @@ module API
         
         
         def replies
-            @user = User.find(params[:id]);
+            @user = User.find(params[:id])
             respond_to do |format|
                 format.xml { render xml: @user.replies }
                 format.json { render json: @user.replies }

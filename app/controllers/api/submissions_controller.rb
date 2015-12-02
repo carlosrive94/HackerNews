@@ -1,6 +1,6 @@
 module API
     class SubmissionsController < ApplicationController
-        before_action :addheaders
+        #before_action :addheaders
         skip_before_action :verify_authenticity_token
         
         def index
@@ -28,6 +28,7 @@ module API
         end
         
         def delete
+           # http://stackoverflow.com/questions/23927314/rails-render-xml
             @submission = Submission.find(params[:id])
             respond_to do |format|
                 if @submission.destroy
@@ -58,9 +59,23 @@ module API
             
         end
         
-        def addheaders
-            response.headers['Access-Control-Allow-Origin'] = 'http://swagger.io'
-            response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
+        def upvote
+            @submission = Submission.find(params[:id])
+            @submission.points += 1
+            respond_to do |format|
+                if @submission.save
+                    format.json { render json: @submission }
+                    format.xml { render xml: @submission }
+                else
+                    format.json { render json: @submission.errors, status: :unprocessable_entity }
+                    format.xml { render xml: @submission.errors, status: :unprocessable_entity }
+                end
+            end
         end
+        
+        #def addheaders
+         #   response.headers['Access-Control-Allow-Origin'] = 'http://swagger.io'
+         #   response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
+        #end
     end
 end

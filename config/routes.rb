@@ -37,6 +37,7 @@ Rails.application.routes.draw do
         get '/' => 'api/submissions#show'
         get '/comments' => 'api/submissions#comments'
         delete '/' => 'api/submissions#delete'
+        put '/vote' => 'api/submissions#upvote'
       end
     end
     scope '/comments' do
@@ -45,17 +46,17 @@ Rails.application.routes.draw do
       scope '/:id' do
         get '/' => 'api/comments#show'
         get '/replies' => 'api/comments#replies'
+        put '/vote' => 'api/comments#upvote'
       end
     end
     scope '/users' do
       get '/' => 'api/users#index'
-      post '/' => 'api/users#create'
       scope '/:id' do
         get '/' => 'api/users#show'
         put '/' => 'api/users#edit'
-        get '/' => 'api/users#submissions'
-        get '/' => 'api/users#comments'
-        get '/' => 'api/users#replies'
+        get '/submissions' => 'api/users#submissions'
+        get '/comments' => 'api/users#comments'
+        get '/replies' => 'api/users#replies'
       end
     end
     scope '/replies' do
@@ -63,6 +64,7 @@ Rails.application.routes.draw do
       post '/' => 'api/replies#create'
       scope '/:id' do
         get '/' => 'api/replies#show'
+        put '/vote' => 'api/replies#upvote'
       end
     end
   end
