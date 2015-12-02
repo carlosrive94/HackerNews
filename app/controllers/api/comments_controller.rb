@@ -32,7 +32,7 @@ module API
                 format.json { render json: @comment }
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "comment not found"}'
+                render json: '{"response": "comment not found"}', :status => 404
         end
         
         def replies
@@ -42,7 +42,7 @@ module API
                 format.json { render json: @comment.replies }
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "comment not found"}'
+                render json: '{"response": "comment not found"}', :status => 404
         end
         
         def upvote
@@ -58,7 +58,7 @@ module API
                 end
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "comment not found"}'
+                render json: '{"response": "comment not found"}', :status => 404
         end
     end
 end

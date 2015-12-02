@@ -1,6 +1,6 @@
 module API
     class SubmissionsController < ApplicationController
-        #before_action :addheaders
+
         skip_before_action :verify_authenticity_token
         
         def index
@@ -31,17 +31,23 @@ module API
            # http://stackoverflow.com/questions/23927314/rails-render-xml
             @submission = Submission.find(params[:id])
             respond_to do |format|
+                @comments = @submission.comments
                 if @submission.destroy
+                    @comments.each do |comment|
+                        comment.replies.each do |reply|
+                            reply.destroy
+                        end
+                        comment.destroy
+                    end
                     format.json { render json: '{"response": "succesfully deleted"}' }
                     format.xml { render xml:"<response>succesfully deleted</response>" }
-                else
-                     #format.json { render json: @submission.errors, status: :unprocessable_entity }
-                     #format.xml { render xml: @submission.errors, status: :unprocessable_entity }
                 end
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "submission not found"}'
+                render json: '{"response": "submission not found"}', :status => 404
         end
+        
+        #@submission.comments.each do |comment|
         
 
         def show
@@ -51,7 +57,7 @@ module API
                 format.json { render json: @submission }
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "submission not found"}'
+                render json: '{"response": "submission not found"}', :status => 404
         end
         
         def comments
@@ -61,7 +67,7 @@ module API
                 format.json { render json: @submission.comments }
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "submission not found"}'
+                render json: '{"response": "submission not found"}', :status => 404
         end
         
         def upvote
@@ -77,12 +83,7 @@ module API
                 end
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "submission not found"}'
+                render json: '{"response": "submission not found"}', :status => 404
         end
-        
-        #def addheaders
-         #   response.headers['Access-Control-Allow-Origin'] = 'http://swagger.io'
-         #   response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
-        #end
     end
 end

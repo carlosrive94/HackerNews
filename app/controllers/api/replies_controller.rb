@@ -32,7 +32,7 @@ module API
                 format.json { render json: @reply }
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "reply not found"}'
+                render json: '{"response": "reply not found"}', :status => 404
         end    
         
         def upvote
@@ -48,7 +48,7 @@ module API
                 end
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "reply not found"}'
+                render json: '{"response": "reply not found"}', :status => 404
         end
     end
 end

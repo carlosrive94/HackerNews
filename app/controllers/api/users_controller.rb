@@ -24,7 +24,7 @@ module API
                 end
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "user not found"}'
+                render json: '{"response": "user not found"}', :status => 404
         end
     
         def show
@@ -34,7 +34,7 @@ module API
                 format.json { render json: @user }
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "user not found"}'
+                render json: '{"response": "user not found"}', :status => 404
         end
         
         def submissions
@@ -44,7 +44,7 @@ module API
                 format.json { render json: @user.submissions }
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "user not found"}'
+                render json: '{"response": "user not found"}', :status => 404
         end
         
         def comments
@@ -54,7 +54,7 @@ module API
                 format.json { render json: @user.comments }
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "user not found"}'
+                render json: '{"response": "user not found"}', :status => 404
         end
         
         
@@ -65,7 +65,7 @@ module API
                 format.json { render json: @user.replies }
             end
             rescue ActiveRecord::RecordNotFound
-                render json: '{"response": "user not found"}'
+                render json: '{"response": "user not found"}', :status => 404
         end
         
     end 
