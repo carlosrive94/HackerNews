@@ -1,0 +1,438 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: asw-hacker API
+  description: |
+    **Our ASW Project API**
+host: asw-hacker.herokuapp.com
+basePath: /api
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /submissions:
+    get:
+      responses:
+        '200':
+          description: List all submissions
+          schema:
+            title: Submissions
+            type: array
+            items:
+              $ref: '#/definitions/Submission'
+    post:
+      parameters:
+        - name: submission
+          in: body
+          description: The submission JSON you want to post
+          schema:
+            $ref: '#/definitions/NewSub'
+          required: true
+      responses:
+        '200':
+          description: Make a new submission
+          schema:
+            $ref: '#/definitions/Submission'
+        '400':
+          description: Content or url
+  '/submissions/{subId}':
+    get:
+      parameters:
+        - name: subId
+          in: path
+          type: integer
+          description: ID of the submission
+          required: true
+      responses:
+        '200':
+          description: Returns the submission with this subId
+          schema:
+              $ref: '#/definitions/Submission'
+        '404':
+          description: Submission not found
+    delete:
+      parameters:
+        - in: path
+          name: subId
+          description: Submission id to delete
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Submission deleted
+        '404':
+          description: Submission not found
+  '/submissions/{subId}/comments':
+    get:
+      parameters:
+        - name: subId
+          in: path
+          type: integer
+          description: ID of the submission
+          required: true
+      responses:
+        '200':
+          description: Returns the comments of the submission with this subId
+          schema:
+            title: Comments
+            type: array
+            items:
+              $ref: '#/definitions/Comment'
+        '404':
+          description: Submission not found
+  '/submissions/{subId}/vote':
+    put:
+      parameters:
+        - name: subId
+          in: path
+          type: integer
+          description: ID of the submission
+          required: true
+      responses:
+        '200':
+          description: Submission voted
+          schema:
+            $ref: '#/definitions/Submission'
+        '404':
+          description: Submission not found
+          
+  /comments:
+    get:
+      responses:
+        '200':
+          description: List all comments
+          schema:
+            title: Comments
+            type: array
+            items:
+              $ref: '#/definitions/Comment'
+    post:
+      parameters:
+        - name: comment
+          in: body
+          description: The comment JSON you want to post
+          schema:
+            $ref: '#/definitions/NewCom'
+          required: true
+      responses:
+        '200':
+          description: Make a new comment
+          schema:
+            $ref: '#/definitions/Comment'
+  '/comments/{comId}':
+    get:
+      parameters:
+        - name: comId
+          in: path
+          type: integer
+          description: ID of the comment
+          required: true
+      responses:
+        '200':
+          description: Returns the comment with this comId
+          schema:
+            $ref: '#/definitions/Comment'
+        '404':
+          description: Comment not found
+  '/comments/{comId}/replies':
+    get:
+      parameters:
+        - name: comId
+          in: path
+          type: integer
+          description: ID of the comment
+          required: true
+      responses:
+        '200':
+          description: Returns the replies of the comment with this comId
+          schema:
+            title: Replies
+            type: array
+            items:
+              $ref: '#/definitions/Reply'
+        '404':
+          description: Comment not found
+  '/comments/{comId}/vote':
+    put:
+      parameters:
+        - name: comId
+          in: path
+          type: integer
+          description: ID of the comment
+          required: true
+      responses:
+        '200':
+          description: Comment voted
+          schema:
+            $ref: '#/definitions/Comment'
+        '404':
+          description: Comment not found
+          
+  /users:
+    get:
+      responses:
+        '200':
+          description: List all users
+          schema:
+            title: Users
+            type: array
+            items:
+              $ref: '#/definitions/User'
+  '/users/{userId}':
+    get:
+      parameters:
+        - name: userId
+          in: path
+          type: integer
+          description: ID of the user
+          required: true
+      responses:
+        '200':
+          description: Returns the user with this userId
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          description: User not found
+    put:
+      parameters:
+        - in: path
+          name: userId
+          type: integer
+          description: ID of the user
+          required: true
+        - in: body
+          name: about
+          description: about the user
+          required: true
+          schema:
+            $ref: '#/definitions/editUser'
+      responses:
+        '200':
+          description: Returns the user updated
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          description: User not found
+  '/users/{userId}/submissions':
+    get:
+      parameters:
+        - name: userId
+          in: path
+          type: integer
+          description: ID of the user
+          required: true
+      responses:
+        '200':
+          description: List all submissions
+          schema:
+            title: Submissions
+            type: array
+            items:
+              $ref: '#/definitions/Submission'
+        '404':
+          description: User not found
+  '/users/{userId}/comments':
+    get:
+      parameters:
+        - name: userId
+          in: path
+          type: integer
+          description: ID of the user
+          required: true
+      responses:
+        '200':
+          description: List all comments
+          schema:
+            title: Comments
+            type: array
+            items:
+              $ref: '#/definitions/Comment'
+        '404':
+          description: User not found
+  '/users/{userId}/replies':
+    get:
+      parameters:
+        - name: userId
+          in: path
+          type: integer
+          description: ID of the user
+          required: true
+      responses:
+        '200':
+          description: List all replies
+          schema:
+            title: Replies
+            type: array
+            items:
+              $ref: '#/definitions/Reply'
+        '404':
+          description: User not found
+          
+  /replies:
+    get:
+      responses:
+        '200':
+          description: List all replies
+          schema:
+            title: Replies
+            type: array
+            items:
+              $ref: '#/definitions/Reply'
+    post:
+      parameters:
+        - name: reply
+          in: body
+          description: The reply JSON you want to post
+          schema:
+            $ref: '#/definitions/NewReply'
+          required: true
+      responses:
+        '200':
+          description: Make a new reply
+          schema:
+            schema:
+            $ref: '#/definitions/Reply'
+  '/replies/{repId}':
+    get:
+      parameters:
+        - name: repId
+          in: path
+          type: integer
+          description: ID of the reply
+          required: true
+      responses:
+        '200':
+          description: Returns the reply with this repId
+          schema:
+            $ref: '#/definitions/Reply'
+        '404':
+          description: Reply not found
+  '/replies/{repId}/vote':
+    put:
+      parameters:
+        - name: repId
+          in: path
+          type: integer
+          description: ID of the reply
+          required: true
+      responses:
+        '200':
+          description: Reply voted
+          schema:
+            $ref: '#/definitions/Reply'
+        '404':
+          description: Reply not found
+          
+definitions:
+  Submission:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+      points:
+        type: integer
+      content:
+        type: string
+      user_id:
+        type: integer
+      created_at:
+        type: string
+        format: date
+      updated_at:
+        type: string
+        format: date
+  NewSub:
+    type: object
+    properties:
+      title:
+        type: string
+      url:
+        type: string
+      content:
+        type: string
+  Comment:
+    type: object
+    properties:
+      id:
+        type: integer
+      content:
+        type: string
+      points:
+        type: integer
+      user_id:
+        type: integer
+      submission_id:
+        type: integer
+      created_at:
+        type: string
+        format: date
+      updated_at:
+        type: string
+        format: date
+  NewCom:
+    type: object
+    properties:
+      content:
+        type: string
+      submission_id:
+        type: integer
+  Reply:
+    type: object
+    properties:
+      id:
+        type: integer
+      content:
+        type: string
+      points:
+        type: integer
+      user_id:
+        type: integer
+      comment_id:
+        type: integer
+      created_at:
+        type: string
+        format: date
+      updated_at:
+        type: string
+        format: date
+  NewReply:
+    type: object
+    properties:
+      content:
+        type: string
+      comment_id:
+        type: integer
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      userName:
+        type: string
+      password:
+        type: string
+      karma:
+        type: integer
+      about:
+        type: string
+      uid:
+        type: string
+      created_at:
+        type: string
+        format: date
+      updated_at:
+        type: string
+        format: date
+  editUser:
+    type: object
+    properties:
+      about:
+        type: string
