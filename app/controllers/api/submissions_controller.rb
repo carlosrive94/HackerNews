@@ -15,15 +15,19 @@ module API
             @title = params["title"]
             @url = params["url"]
             @content = params["content"]
-            @submission = Submission.new(:title => @title, :url => @url, :content => @content, :points => 0, :user_id => 1)
-            respond_to do |format|
-                if @submission.save
-                  format.json { render json: @submission }
-                  format.xml { render xml: @submission }
-                else
-                  format.json { render json: @submission.errors, status: :unprocessable_entity }
-                  format.xml { render xml: @submission.errors, status: :unprocessable_entity }
+            if ((@url == nil and @content != nil) or (@url != nil and @content == nil))
+                @submission = Submission.new(:title => @title, :url => @url, :content => @content, :points => 0, :user_id => 1)
+                respond_to do |format|
+                    if @submission.save
+                      format.json { render json: @submission }
+                      format.xml { render xml: @submission }
+                    else
+                      format.json { render json: @submission.errors, status: :unprocessable_entity }
+                      format.xml { render xml: @submission.errors, status: :unprocessable_entity }
+                    end
                 end
+            else
+                render json: '{"response": "content or url"}', :status => 418
             end
         end
         
