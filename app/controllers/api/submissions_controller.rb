@@ -39,6 +39,8 @@ module API
                      #format.xml { render xml: @submission.errors, status: :unprocessable_entity }
                 end
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "submission not found"}'
         end
         
 
@@ -48,6 +50,8 @@ module API
                 format.xml { render xml: @submission }
                 format.json { render json: @submission }
             end
+            rescue ActiveRecord::RecordNotFound
+                render '{"response": "submission not found"}'
         end
         
         def comments
@@ -56,7 +60,8 @@ module API
                 format.xml { render xml: @submission.comments }
                 format.json { render json: @submission.comments }
             end
-            
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "submission not found"}'
         end
         
         def upvote
@@ -71,6 +76,8 @@ module API
                     format.xml { render xml: @submission.errors, status: :unprocessable_entity }
                 end
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "submission not found"}'
         end
         
         #def addheaders

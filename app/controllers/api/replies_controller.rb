@@ -31,6 +31,8 @@ module API
                 format.xml { render xml: @reply }
                 format.json { render json: @reply }
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "reply not found"}'
         end    
         
         def upvote
@@ -45,6 +47,8 @@ module API
                     format.xml { render xml: @reply.errors, status: :unprocessable_entity }
                 end
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "reply not found"}'
         end
     end
 end

@@ -23,6 +23,8 @@ module API
                     format.xml { render xml: @user.errors, status: :unprocessable_entity }
                 end
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "user not found"}'
         end
     
         def show
@@ -31,6 +33,8 @@ module API
                 format.xml { render xml: @user }
                 format.json { render json: @user }
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "user not found"}'
         end
         
         def submissions
@@ -39,6 +43,8 @@ module API
                 format.xml { render xml: @user.submissions }
                 format.json { render json: @user.submissions }
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "user not found"}'
         end
         
         def comments
@@ -47,6 +53,8 @@ module API
                 format.xml { render xml: @user.comments }
                 format.json { render json: @user.comments }
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "user not found"}'
         end
         
         
@@ -56,6 +64,8 @@ module API
                 format.xml { render xml: @user.replies }
                 format.json { render json: @user.replies }
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "user not found"}'
         end
         
     end 

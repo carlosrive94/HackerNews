@@ -31,6 +31,8 @@ module API
                 format.xml { render xml: @comment }
                 format.json { render json: @comment }
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "comment not found"}'
         end
         
         def replies
@@ -39,6 +41,8 @@ module API
                 format.xml { render xml: @comment.replies }
                 format.json { render json: @comment.replies }
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "comment not found"}'
         end
         
         def upvote
@@ -53,6 +57,8 @@ module API
                   format.xml { render xml: @comment.errors, status: :unprocessable_entity }
                 end
             end
+            rescue ActiveRecord::RecordNotFound
+                render json: '{"response": "comment not found"}'
         end
     end
 end
