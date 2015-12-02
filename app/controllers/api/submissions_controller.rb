@@ -51,7 +51,7 @@ module API
                 format.json { render json: @submission }
             end
             rescue ActiveRecord::RecordNotFound
-                render '{"response": "submission not found"}'
+                render json: '{"response": "submission not found"}'
         end
         
         def comments
