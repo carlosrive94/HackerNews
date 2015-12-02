@@ -27,7 +27,7 @@ module API
                     end
                 end
             else
-                render json: '{"response": "content or url"}', :status => 418
+                render json: '{"response": "content or url"}', :status => 400
             end
         end
         
