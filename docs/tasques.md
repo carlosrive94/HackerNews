@@ -18,3 +18,10 @@
 | Filtrar submissions ask | Daniel Villanueva | Daniel Villanueva, Carlos Rivero | 5 | 2 |
 | Validació de camps | Eloi Pardo | Eloi Pardo | 5 | 2 |
 | Mostrar / Editar usuaris | Daniel Villanueva | Daniel Villanueva, Carlos Rivero | 5 | 0.5 |
+| Cercar informació sobre utilització de la API | Daniel Villanueva | Daniel Villanueva, Carlos Rivero, Eloi Pardo, Oriol Fort | 6 | 2 |
+| Crear rutes | Carlos Rivero | Daniel Villanueva, Carlos Rivero | 6 | 2 |
+| Implementació gets | Daniel Villanueva | Daniel Villanueva, Oriol Fort | 7 | 2 |
+| Implementació post i puts | Eloi Pardo | Eloi Pardo, Carlos Rivero | 7 | 2 |
+| Fitxer yaml | Eloi Pardo | Eloi Pardo, Oriol Fort | 7 | 2 |
+| Testeig | Carlos Rivero | Daniel Villanueva, Eloi Pardo, Carlos Rivero | 7 | 2 |
+
