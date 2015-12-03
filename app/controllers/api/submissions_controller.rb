@@ -11,6 +11,22 @@ module API
             end
         end
         
+        def ask
+            @submissions = Submission.where(url: [nil, ""])
+            respond_to do |format|
+                format.xml { render xml: @submissions }
+                format.json { render json: @submissions }
+            end
+        end
+        
+        def links
+            @submissions = Submission.where(content: [nil, ""])
+            respond_to do |format|
+                format.xml { render xml: @submissions }
+                format.json { render json: @submissions }
+            end
+        end
+        
         def create
             @title = params["title"]
             @url = params["url"]

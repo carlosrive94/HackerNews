@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     scope '/submissions' do
       get '/' => 'api/submissions#index'
       post '/' => 'api/submissions#create'
+      get '/ask' => 'api/submissions#ask'
+      get '/links' => 'api/submissions#links'
       scope '/:id' do
         get '/' => 'api/submissions#show'
         get '/comments' => 'api/submissions#comments'
