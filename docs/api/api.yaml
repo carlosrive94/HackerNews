@@ -35,10 +35,26 @@ paths:
       responses:
         '200':
           description: Make a new submission
+  '/submissions/ask':
+    get:
+      responses:
+        '200':
+          description: List all submissions ask
           schema:
-            $ref: '#/definitions/Submission'
-        '400':
-          description: Content or url
+            title: Submissions ask
+            type: array
+            items:
+              $ref: '#/definitions/Submission'
+  '/submissions/links':
+    get:
+      responses:
+        '200':
+          description: List all submissions links
+          schema:
+            title: Submissions link
+            type: array
+            items:
+              $ref: '#/definitions/Submission'
   '/submissions/{subId}':
     get:
       parameters:
@@ -50,10 +66,6 @@ paths:
       responses:
         '200':
           description: Returns the submission with this subId
-          schema:
-              $ref: '#/definitions/Submission'
-        '404':
-          description: Submission not found
     delete:
       parameters:
         - in: path
@@ -62,10 +74,8 @@ paths:
           required: true
           type: integer
       responses:
-        '200':
-          description: Submission deleted
-        '404':
-          description: Submission not found
+        '400':
+          description: Invalid submission value
   '/submissions/{subId}/comments':
     get:
       parameters:
@@ -82,8 +92,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Comment'
-        '404':
-          description: Submission not found
   '/submissions/{subId}/vote':
     put:
       parameters:
@@ -93,13 +101,8 @@ paths:
           description: ID of the submission
           required: true
       responses:
-        '200':
-          description: Submission voted
-          schema:
-            $ref: '#/definitions/Submission'
         '404':
           description: Submission not found
-          
   /comments:
     get:
       responses:
@@ -121,8 +124,6 @@ paths:
       responses:
         '200':
           description: Make a new comment
-          schema:
-            $ref: '#/definitions/Comment'
   '/comments/{comId}':
     get:
       parameters:
@@ -134,10 +135,6 @@ paths:
       responses:
         '200':
           description: Returns the comment with this comId
-          schema:
-            $ref: '#/definitions/Comment'
-        '404':
-          description: Comment not found
   '/comments/{comId}/replies':
     get:
       parameters:
@@ -149,13 +146,6 @@ paths:
       responses:
         '200':
           description: Returns the replies of the comment with this comId
-          schema:
-            title: Replies
-            type: array
-            items:
-              $ref: '#/definitions/Reply'
-        '404':
-          description: Comment not found
   '/comments/{comId}/vote':
     put:
       parameters:
@@ -165,13 +155,8 @@ paths:
           description: ID of the comment
           required: true
       responses:
-        '200':
-          description: Comment voted
-          schema:
-            $ref: '#/definitions/Comment'
         '404':
           description: Comment not found
-          
   /users:
     get:
       responses:
@@ -193,10 +178,6 @@ paths:
       responses:
         '200':
           description: Returns the user with this userId
-          schema:
-            $ref: '#/definitions/User'
-        '404':
-          description: User not found
     put:
       parameters:
         - in: path
@@ -213,10 +194,6 @@ paths:
       responses:
         '200':
           description: Returns the user updated
-          schema:
-            $ref: '#/definitions/User'
-        '404':
-          description: User not found
   '/users/{userId}/submissions':
     get:
       parameters:
@@ -233,8 +210,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Submission'
-        '404':
-          description: User not found
   '/users/{userId}/comments':
     get:
       parameters:
@@ -251,8 +226,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Comment'
-        '404':
-          description: User not found
   '/users/{userId}/replies':
     get:
       parameters:
@@ -269,9 +242,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Reply'
-        '404':
-          description: User not found
-          
   /replies:
     get:
       responses:
@@ -293,9 +263,6 @@ paths:
       responses:
         '200':
           description: Make a new reply
-          schema:
-            schema:
-            $ref: '#/definitions/Reply'
   '/replies/{repId}':
     get:
       parameters:
@@ -307,10 +274,6 @@ paths:
       responses:
         '200':
           description: Returns the reply with this repId
-          schema:
-            $ref: '#/definitions/Reply'
-        '404':
-          description: Reply not found
   '/replies/{repId}/vote':
     put:
       parameters:
@@ -320,13 +283,8 @@ paths:
           description: ID of the reply
           required: true
       responses:
-        '200':
-          description: Reply voted
-          schema:
-            $ref: '#/definitions/Reply'
         '404':
           description: Reply not found
-          
 definitions:
   Submission:
     type: object
