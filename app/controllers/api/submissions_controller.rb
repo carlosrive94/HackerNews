@@ -6,24 +6,24 @@ module API
         def index
             @submissions = Submission.all
             respond_to do |format|
-                format.xml { render xml: @submissions }
-                format.json { render json: @submissions }
+                format.xml { render xml: @submissions.order('updated_at desc') }
+                format.json { render json: @submissions.order('updated_at desc') }
             end
         end
         
         def ask
             @submissions = Submission.where(url: [nil, ""])
             respond_to do |format|
-                format.xml { render xml: @submissions }
-                format.json { render json: @submissions }
+                format.xml { render xml: @submissions.order('updated_at desc') }
+                format.json { render json: @submissions.order('updated_at desc') }
             end
         end
         
         def links
             @submissions = Submission.where(content: [nil, ""])
             respond_to do |format|
-                format.xml { render xml: @submissions }
-                format.json { render json: @submissions }
+                format.xml { render xml: @submissions.order('updated_at desc') }
+                format.json { render json: @submissions.order('updated_at desc') }
             end
         end
         
