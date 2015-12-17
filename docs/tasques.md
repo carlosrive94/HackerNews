@@ -24,4 +24,10 @@
 | Implementació post i puts | Eloi Pardo | Eloi Pardo, Carlos Rivero | 7 | 2 |
 | Fitxer yaml | Eloi Pardo | Eloi Pardo, Oriol Fort | 7 | 2 |
 | Testeig | Carlos Rivero | Daniel Villanueva, Eloi Pardo, Carlos Rivero | 7 | 2 |
+| Buscar informació | Eloi Pardo | Daniel Villanueva, Eloi Pardo, Carlos Rivero | 8 | 2 |
+| Integrar api a ng admin | Carlos Rivero | Daniel Villanueva, Eloi Pardo, Carlos Rivero | 9 | 2 |
+| Rutes entre submissions/comentaris/replies | Daniel Villanueva | Daniel Villanueva, Eloi Pardo, Carlos Rivero | 9 | 2 |
+| Implementar accions | Daniel Villanueva | Daniel Villanueva, Eloi Pardo, Carlos Rivero | 9 | 2 |
+| Implementar botó de votar | Carlos Rivero | Daniel Villanueva, Eloi Pardo, Carlos Rivero | 9 | 2 |
+| Deploy a heroku | Eloi Pardo | Daniel Villanueva, Eloi Pardo, Carlos Rivero | 9 | 2 |
 
